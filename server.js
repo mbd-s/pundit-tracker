@@ -48,7 +48,7 @@ app.get('/pundit-view', function showPunditView(req, res) {
   });
 });
 
-// TODO: Make 'api/pundit' endpoint
+
 
 app.get('/api/sanity', function sanity(req, res) {
     res.json({
@@ -56,7 +56,7 @@ app.get('/api/sanity', function sanity(req, res) {
     });
 });
 
-
+// TODO: Make 'api/pundit' endpoint
 app.get('/api/pundit', function sanity(req, res) {
 
   db.Pundit.find( {}, function(err, success){
