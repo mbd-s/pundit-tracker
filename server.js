@@ -26,6 +26,11 @@ app.get('/pundit-view', function showPunditView(req, res) {
   res.sendFile(__dirname + '/views/pundit-view.html');
 });
 
+app.get('/admin', function showAdminPage(req, res) {
+  console.log(__dirname);
+  res.sendFile(__dirname + '/views/admin.html');
+});
+
 /*
  * API Endpoints
  */
