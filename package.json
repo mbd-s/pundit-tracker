@@ -1,0 +1,24 @@
+{
+  "name": "pundit-tracker",
+  "version": "1.0.0",
+  "description": "user stories: https://trello.com/b/JuIVUR8C/pundit-tracker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbd-s/pundit-tracker.git"
+  },
+  "author": "Michael Silverberg <michaelbsilverberg@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbd-s/pundit-tracker/issues"
+  },
+  "homepage": "https://github.com/mbd-s/pundit-tracker#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mongoose": "^4.4.11"
+  }
+}
