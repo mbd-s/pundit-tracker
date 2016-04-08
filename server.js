@@ -3,10 +3,14 @@
 var express = require('express');
 var app = express();
 var db = require('./models');
-
+var controllers = require('./controllers');
+var bodyParser = require('body-parser');
 
 // serve static files from public folder
 app.use(express.static(__dirname + '/public'));
+
+// body parser config to accept our datatypes
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 /**********
@@ -35,40 +39,36 @@ app.get('/admin', function showAdminPage(req, res) {
  * API Endpoints
  */
 
- app.get('/api', function(req, res) {
-  res.json({
-    message: "Here you'll find information about using the site's API",
-    documentation_url: "https://github.com/mbd-s/pundit-tracker",
-    base_url: "",
-    endpoints: [
-      {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/pundit", description: "Returns a list of all pundits"},
-      {method: "GET", path: "/api/prediction", description: "Returns a list of all predictions"},
-      {method: "GET", path: "/api/pundit/:id/prediction", description: "Returns a list of all predictions by a single pundit"},
-      {method: "POST", path: "/api/prediction", description: "Adds a new prediction"},
-      {method: "POST", path: "/api/pundit", description: "Adds a new pundit"},
-      {method: "DELETE", path: "api/prediction/:id", description: "Deletes a prediction"},
-      {method: "PUT", path: "/api/prediction/:id", description: "Updates a prediction"},
-    ]
-  });
-});
+//show all API endpoints with available methods
+ app.get('/api', controllers.api.index);
 
+//show all pundits
+ app.get('/api/pundit', controllers.pundits.index);
 
+ // //show one pundit
+ // app.get('/api/pundit/:punditId', controllers.pundits.index);
 
-app.get('/api/sanity', function sanity(req, res) {
-    res.json({
-        message: "Hello, World!"
-    });
-});
+ //show all predictions (is this necessary, since all predictions will be shown in 'show one pundit'?)
+ // app.get('/api/pundit/:punditId/prediction', controllers.pundits.index);
 
-// TODO: Make 'api/pundit' endpoint
-app.get('/api/pundit', function sanity(req, res) {
+ // create a pundit
+ // app.post('/api/pundit', controllers.pundits.create);
 
-  db.Pundit.find( {}, function(err, success){
-    if (err){ return console.log("error", err); }
-    res.json(success);
-  });
-});
+ //create a prediction embedded in pundit
+  app.post('/api/pundit/:punditId/predictions/', controllers.pundits.create);
+
+ //delete a pundit
+ // app.delete('/api/pundit/:punditId', controllers.pundits.delete);
+ //
+ // //delete a prediction (admin only)
+ // app.delete('api/prediction/:predictionId', controllers.punditsPredictions.delete);
+
+ //update a pundit (admin only)
+ // app.put('/api/pundit/:punditId', controllers.pundits.update);
+
+ //update a prediction (admin only)
+ //app.put('/api/prediction/:predictionId', controllers.punditsPredictions.update);
+
 /**********
  * SERVER *
  **********/

@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Prediction = require('./prediction');
 
 var PunditSchema = new Schema({
   name: String,
   cassandraScore: Number,
-  // TODO embed PredictionSchema
+  predictions: [Prediction.schema]
 });
 
 var Pundit = mongoose.model('Pundit', PunditSchema);
