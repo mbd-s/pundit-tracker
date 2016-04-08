@@ -12,7 +12,6 @@ app.use(express.static(__dirname + '/public'));
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 /**********
  * ROUTES *
  **********/
@@ -23,11 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', function homepage(req, res) {
   console.log(__dirname);
   res.sendFile(__dirname + '/views/index.html');
-});
-
-app.get('/pundit-view', function showPunditView(req, res) {
-  console.log(__dirname);
-  res.sendFile(__dirname + '/views/pundit-view.html');
 });
 
 app.get('/admin', function showAdminPage(req, res) {
@@ -45,26 +39,26 @@ app.get('/admin', function showAdminPage(req, res) {
 //show all pundits
  app.get('/api/pundit', controllers.pundits.index);
 
- // //show one pundit
- // app.get('/api/pundit/:punditId', controllers.pundits.index);
-
- //show all predictions (is this necessary, since all predictions will be shown in 'show one pundit'?)
- // app.get('/api/pundit/:punditId/predictions', controllers.pundits.index);
+ // create a pundit (.create?)
+ // app.post('/api/pundit', controllers.pundits.create);
 
  //create a prediction embedded in pundit
  app.post('/api/pundit/:punditId/predictions/', controllers.pundits.create);
 
- // create a pundit
- // app.post('/api/pundit', controllers.pundits.create);
-
  //delete a pundit (admin only)
  app.delete('/api/pundit/:punditId', controllers.pundits.remove);
+
+ //update a pundit (admin only)
+ // app.put('/api/pundit/:punditId', controllers.pundits.update);
 
  //delete a prediction (admin only)
  // app.delete('api/prediction/:predictionId', controllers.punditsPredictions.delete);
 
- //update a pundit (admin only)
- // app.put('/api/pundit/:punditId', controllers.pundits.update);
+ // //show one pundit (diff name than 'index'? 'show'?)
+ // app.get('/api/pundit/:punditId', controllers.pundits.index);
+
+ //show all predictions (is this necessary, since all predictions will be shown in 'show one pundit'?)
+ // app.get('/api/pundit/:punditId/predictions', controllers.pundits.index);
 
  //update a prediction (admin only)
  //app.put('/api/prediction/:predictionId', controllers.punditsPredictions.update);
