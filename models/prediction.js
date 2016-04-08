@@ -7,7 +7,6 @@ var PredictionSchema = new Schema({
   notes: String,
   sourceDescr: String,
   sourceUrl: String,
-  submitterName: String,
   submitterEmail: String,
   truthValue: Number
 });

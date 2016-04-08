@@ -19,31 +19,34 @@ var predictionObjects = [{
   checkDate: "6 April 2016",
   sourceDescr: 'NY Times column, 6 April 2016',
   sourceUrl: 'http://www.nytimes.com',
-  submitterName: "David Brooks",
   submitterEmail: "davidbrooks@obviouslyfakedomain.com",
   truthValue: -1,
   notes: "Lunch was actually bad"
 },
 {
-  name: "",
+  name: "The earth will still be around today.",
   checkDate: "6 April 2016",
-  sourceDescr: 'NY Times column, 6 April 2016',
-  sourceUrl: '',
-  submitterName: String,
-  submitterEmail: String,
-  truthValue: -1,
-  notes: "Lunch was actually bad"
+  sourceDescr: 'My own head',
+  sourceUrl: 'none',
+  submitterEmail: "anonymous",
+  truthValue: 1,
+  notes: "Yep."
   }
 ];
 
 
-
-
 db.Pundit.remove({}, function(err, deletedPundits){
-
   db.Pundit.create( punditObjects, function(err, successfulPundit){
-    if (err) { return console.log('ERROR', err);}
+    if (err) {
+      return console.log('ERROR', err);
+    }
     console.log("Success! Here's the database entry: ", successfulPundit);
+  });
+  db.Prediction.create( predictionObjects, function(err, successfulPrediction){
+    if (err) {
+      return console.log('ERROR', err);
+    }
+    console.log("Success! Here's the database entry: ", successfulPrediction);
     process.exit();
   });
 console.log("Everything removed!");

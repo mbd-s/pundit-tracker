@@ -45,6 +45,9 @@ app.get('/admin', function showAdminPage(req, res) {
 //show all pundits
  app.get('/api/pundit', controllers.pundits.index);
 
+ //create a prediction embedded in pundit
+ app.post('/api/pundit/:punditId/predictions/', controllers.pundits.create);
+
  // //show one pundit
  // app.get('/api/pundit/:punditId', controllers.pundits.index);
 
@@ -53,9 +56,6 @@ app.get('/admin', function showAdminPage(req, res) {
 
  // create a pundit
  // app.post('/api/pundit', controllers.pundits.create);
-
- //create a prediction embedded in pundit
-  app.post('/api/pundit/:punditId/predictions/', controllers.pundits.create);
 
  //delete a pundit
  // app.delete('/api/pundit/:punditId', controllers.pundits.delete);
