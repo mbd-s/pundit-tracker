@@ -45,22 +45,22 @@ app.get('/admin', function showAdminPage(req, res) {
 //show all pundits
  app.get('/api/pundit', controllers.pundits.index);
 
- //create a prediction embedded in pundit
- app.post('/api/pundit/:punditId/predictions/', controllers.pundits.create);
-
  // //show one pundit
  // app.get('/api/pundit/:punditId', controllers.pundits.index);
 
  //show all predictions (is this necessary, since all predictions will be shown in 'show one pundit'?)
- // app.get('/api/pundit/:punditId/prediction', controllers.pundits.index);
+ // app.get('/api/pundit/:punditId/predictions', controllers.pundits.index);
+
+ //create a prediction embedded in pundit
+ app.post('/api/pundit/:punditId/predictions/', controllers.pundits.create);
 
  // create a pundit
  // app.post('/api/pundit', controllers.pundits.create);
 
- //delete a pundit
- // app.delete('/api/pundit/:punditId', controllers.pundits.delete);
- //
- // //delete a prediction (admin only)
+ //delete a pundit (admin only)
+ app.delete('/api/pundit/:punditId', controllers.pundits.remove);
+
+ //delete a prediction (admin only)
  // app.delete('api/prediction/:predictionId', controllers.punditsPredictions.delete);
 
  //update a pundit (admin only)

@@ -3,6 +3,7 @@ var db = require("./models");
 var punditObjects = [{
   name: "David Brooks",
   cassandraScore: 1
+  //need to give them a CS? start at 0? 1?
   },
   {
   name: "Bill Kristol",
@@ -10,10 +11,11 @@ var punditObjects = [{
   },
   {
   name: "Bill O'Reilly",
-  cassandraScore: 6
+  cassandraScore: 1
   }
 ];
 
+//possible to associate seed predictions data with seed pundit data?
 var predictionObjects = [{
   name: "I'm going to have a great lunch today",
   checkDate: "6 April 2016",

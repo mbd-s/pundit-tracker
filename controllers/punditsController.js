@@ -21,5 +21,16 @@ function create(req, res) {
  });
 }
 
+function remove(req,res){
+  // set the value of the pundit id
+  var punditId = req.params.punditId;
+  db.Pundit.findOneAndRemove({ _id: punditId }, function (err, removedPundit) {
+    res.json(removedPundit);
+    console.log("Deleted ", removedPundit);
+  });
+
+}
+
 module.exports.index = index;
 module.exports.create = create;
+module.exports.remove = remove;
