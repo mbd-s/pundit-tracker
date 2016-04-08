@@ -2,16 +2,19 @@ var db = require("./models");
 
 var punditObjects = [{
   name: "David Brooks",
-  cassandraScore: 1
+  cassandraScore: 1,
+  image: ""
   //need to give them a CS? start at 0? 1?
   },
   {
   name: "Bill Kristol",
-  cassandraScore: 1
+  cassandraScore: 1,
+  image: ""
   },
   {
   name: "Bill O'Reilly",
-  cassandraScore: 1
+  cassandraScore: 1,
+  image: ""
   }
 ];
 

@@ -22,14 +22,25 @@
   </head>
 
   <body>
-    <div>
-      <h3>Pundit tracker</h3>
+    <div class="container">
+      <div class="row">
+        <h2>Pundit tracker</h2>
+      <button type="button" class="btn btn-primary" id="openModal">Submit a prediction</button>
+      <!-- TODO insert modal -->
+      </div>
+
+      <div class="row">
+      <div class="col-md-5">
+        <h3>PAST PREDICTIONS</h3>
+        <div id="targetPast"></div>
+      </div>
+
+      <div class="col-md-7">
+        <h3>FUTURE PREDICTIONS</h3>
+        <div id="targetFuture"></div>
+      </div>
     </div>
 
-    <button id="openModal">Submit a prediction</button>
-
-    <!-- TODO insert modal -->
-
-
+    </div>
   </body>
 </html>

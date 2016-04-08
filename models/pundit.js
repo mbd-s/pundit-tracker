@@ -5,6 +5,7 @@ var Prediction = require('./prediction');
 var PunditSchema = new Schema({
   name: String,
   cassandraScore: Number,
+  image: String,
   predictions: [Prediction.schema]
 });
 
