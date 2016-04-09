@@ -40,19 +40,19 @@
             <div class="col-md-4 col-md-offset-2">
               <form id="newPredictionForm">
                 <fieldset class="form-group">
-                  <input type="text" class="form-control" placeholder="What&rsquo;s the prediction?">
+                  <input type="text" name="predictionDescr" class="form-control" placeholder="What&rsquo;s the prediction?">
                 </fieldset>
                 <fieldset class="form-group">
-                  <input type="text" class="form-control" placeholder="Who made it?">
+                  <input type="text" name="name" class="form-control" placeholder="Who made it?">
                 </fieldset>
                 <fieldset class="form-group">
-                  <input type="text" id="date-picker" class="form-control" placeholder="When should we check it?">
+                  <input type="text" name="checkDate" id="date-picker" class="form-control" placeholder="When should we check it?">
                 </fieldset>
                 <fieldset class="form-group">
-                  <input type="text" class="form-control" placeholder="What&rsquo;s the source?">
+                  <input type="text" name="sourceDescr" class="form-control" placeholder="What&rsquo;s the source?">
                 </fieldset>
                 <fieldset class="form-group">
-                  <input type="text" class="form-control" placeholder="Enter a link to the source if you have one.">
+                  <input type="text" name="sourceUrl" class="form-control" placeholder="Enter a link to the source if you have one.">
                 </fieldset>
                 <button type="submit" class="btn btn-primary">Submit a prediction</button>
               </form>
@@ -67,6 +67,7 @@
                 <div id="targetPast">
                     <script id="templatePast" type="text/x-handlebars-template">
                       {{#each pundit}}
+
                         {{!-- {{#if prediction.isChecked}} --}}
                           <p>
                             {{#each prediction}}
