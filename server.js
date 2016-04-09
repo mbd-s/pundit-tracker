@@ -43,7 +43,7 @@ app.get('/admin', function showAdminPage(req, res) {
  // show one pundit
  // app.get('/api/pundit/:punditId', controllers.pundits.show);
 
- // create a pundit or add prediction to preexisting pundit
+ // create a pundit or add a prediction to an existing pundit
  app.post('/api/pundit', controllers.pundits.create);
 
  //delete a pundit (admin only)

@@ -4,7 +4,7 @@ var punditObjects = [{
   name: "David Brooks",
   cassandraScore: 1,
   image: ""
-  //need to give them a CS? start at 0? 1?
+  //need to give them a cS? start at 0? 1?
   },
   {
   name: "Bill Kristol",
@@ -21,22 +21,23 @@ var punditObjects = [{
 //possible to associate seed predictions data with seed pundit data?
 var predictionObjects = [{
   predictionDescr: "I'm going to have a great lunch today",
-  checkDate: "6 April 2016",
+  checkDate: "160604",
   sourceDescr: 'NY Times column, 6 April 2016',
   sourceUrl: 'http://www.nytimes.com',
+  isChecked: true,
   truthValue: -1,
   notes: "Lunch was actually bad"
 },
 {
-  predictionDescr: "The earth will still be around today.",
-  checkDate: "6 April 2016",
+  predictionDescr: "The earth will still be around in six months.",
+  checkDate: "161009",
   sourceDescr: 'My own head',
   sourceUrl: 'none',
+  isChecked: false,
   truthValue: 1,
   notes: "Yep."
   }
 ];
-
 
 db.Pundit.remove({}, function(err, deletedPundits){
   db.Pundit.create( punditObjects, function(err, successfulPundit){

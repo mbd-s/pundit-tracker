@@ -8,6 +8,7 @@ var futureTemplate;
 
 $(document).ready(function() {
   $('#date-picker').datepicker({});
+  //TODO add function so dates in the past can't be chosen
   var pastSource = $('#templatePast').html();
   pastTemplate = Handlebars.compile(pastSource);
 
