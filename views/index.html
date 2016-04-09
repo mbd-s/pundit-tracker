@@ -68,7 +68,7 @@
                     <script id="templatePast" type="text/x-handlebars-template">
                       {{#each pundit}}
 
-                        {{!-- {{#if prediction.isChecked}} --}}
+                        {{!-- {{#if prediction.isChecked}} not yet the right drill down --}}
                           <p>
                             {{#each prediction}}
                             <b>Prediction: </b>
@@ -95,7 +95,7 @@
                 <div id="targetCurrent">
                   <script id="templateCurrent" type="text/x-handlebars-template">
                     {{#each pundit}}
-                      {{#if !prediction.isChecked}}
+                  {{!-- {{#if !prediction.isChecked}} not yet the right drill down --}}
                         <p>
                           {{#each prediction}}
                           <b>Prediction: </b>
@@ -110,15 +110,13 @@
                           <br>
                           <b>Date this will be checked: </b>
                           {{checkDate}}
-                      {{/if}}
+                      {{!-- {{/if}} --}}
                         </p>
                     {{/each}}
                   </script>
                 </div>
             </div>
         </div>
-
     </div>
 </body>
-
 </html>

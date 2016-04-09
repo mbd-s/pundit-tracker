@@ -25,25 +25,21 @@ $(document).ready(function() {
     e.preventDefault();
     var formData = $(this).serializeArray();
     console.log('New prediction serialized', formData);
-
+    $.ajax({
+      method: 'POST',
+      url: '/api/pundit',
+      data: formData,
+      success: newPredictionSuccess,
+      error: newPredictionError
+    });
   });
-  //on submitting form
-  //prevent default
-  //serialize
-  //AJAX call
-  // save to db
-  //render entry
-
 });
 
 function render() {
   $('#targetPast').empty();
   $('#targetCurrent').empty();
   var punditHtml = pastTemplate({ pundit: allPundits });
-
-  //append past predictions to #targetPast
   $('#targetPast').append(punditHtml);
-    //append current predictions to #targetCurrent
   $('#targetCurrent').append(punditHtml);
 }
 
@@ -55,4 +51,15 @@ function punditSuccess(json){
 
 function punditError(json){
   console.log("Error!", error);
+}
+
+function newPredictionSuccess(json){
+$('#newPredictionForm input').val('');
+console.log(json);
+allPundits.push(json);
+render();
+}
+
+function newPredictionError(){
+  console.log("Error saving prediction", error);
 }
