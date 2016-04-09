@@ -1,12 +1,11 @@
 .predictionColumn {
   border: black 4px dotted;
-  padding: 5px;
+  padding: 20px;
   margin-top: 10px
 }
 #about {
   font-size: 20px
 }
-
 .container {
   margin-top: 20px
 }

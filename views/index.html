@@ -38,7 +38,7 @@
                 </p>
             </div>
             <div class="col-md-4 col-md-offset-2">
-              <form>
+              <form id="newPredictionForm">
                 <fieldset class="form-group">
                   <input type="text" class="form-control" placeholder="What&rsquo;s the prediction?">
                 </fieldset>
@@ -54,7 +54,7 @@
                 <fieldset class="form-group">
                   <input type="text" class="form-control" placeholder="Enter a link to the source if you have one.">
                 </fieldset>
-                <button type="button" class="btn btn-primary" id="submitPrediction">Submit a prediction</button>
+                <button type="submit" class="btn btn-primary">Submit a prediction</button>
               </form>
             </div>
         </div>
@@ -67,7 +67,7 @@
                 <div id="targetPast">
                     <script id="templatePast" type="text/x-handlebars-template">
                       {{#each pundit}}
-                        {{#if prediction.isChecked}}
+                        {{!-- {{#if prediction.isChecked}} --}}
                           <p>
                             {{#each prediction}}
                             <b>Prediction: </b>
@@ -82,17 +82,17 @@
                           <br>
                           <b>True or false? </b>
                           {{truthValue}}
-                        {{/if}}
+                        {{!-- {{/if}} --}}
                       </p>
                       {{/each}}
                     </script>
                 </div>
             </div>
             <div class="col-md-5 col-md-offset-2 predictionColumn">
-                <h3 class="text-center">FUTURE PREDICTIONS</h3>
+                <h3 class="text-center">CURRENT PREDICTIONS</h3>
                 <br>
-                <div id="targetFuture">
-                  <script id="templateFuture" type="text/x-handlebars-template">
+                <div id="targetCurrent">
+                  <script id="templateCurrent" type="text/x-handlebars-template">
                     {{#each pundit}}
                       {{#if !prediction.isChecked}}
                         <p>
