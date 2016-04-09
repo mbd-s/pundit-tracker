@@ -2,12 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PredictionSchema = new Schema({
-  name: String,
+  predictionDescr: String,
   checkDate: String,
-  notes: String,
   sourceDescr: String,
   sourceUrl: String,
-  submitterEmail: String,
+  isChecked: Boolean,
   truthValue: Number
 });
 

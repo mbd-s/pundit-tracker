@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,45 +11,115 @@
     <!-- <link rel="shortcut icon" href="images/favicon.ico"> -->
 
     <!-- STYLESHEETS -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="styles/styles.css">
 
     <!-- VENDOR SCRIPTS -->
     <script src="https://code.jquery.com/jquery-2.2.3.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container">
-      <div class="row">
-        <h2 class="text-center">Pundit tracker</h2>
-        <div class="col-md-5">
-          <p>
-            About:
-            Pundit Tracker lets you easily keep track of claims that pundits make.
-            Submissions should include a definite end date (e.g., June 12, 2017).
-            It's not a perfect science, but neither is punditry.
-          </p>
+        <div class="row">
+            <h2 class="text-center">PUNDIT TRACKER</h2>
+            <div class="col-md-5">
+                <p>
+                    About: Pundit Tracker lets you easily keep track of claims that pundits make.
+                    Submissions should include a definite end date (e.g., June 12, 2017).
+                    It's not a perfect science, but neither is punditry.
+                </p>
+            </div>
+            <div class="col-md-7">
+              <!-- TODO write prediction submit form -->
+              <!-- TODO put form inside modal -->
+              <form>
+                <fieldset class="form-group">
+                  <input type="text" class="form-control" placeholder="What's the prediction?">
+                </fieldset>
+                <fieldset class="form-group">
+                  <input type="text" class="form-control" placeholder="Who made it?">
+                </fieldset>
+                <fieldset class="form-group">
+                  <input type="text" id="date-picker" class="form-control" placeholder="When should we check it?">
+                </fieldset>
+                <fieldset class="form-group">
+                  <input type="text" class="form-control" placeholder="What's the source?">
+                </fieldset>
+                <fieldset class="form-group">
+                  <input type="text" class="form-control" placeholder="Enter a link to the source if you have one.">
+                </fieldset>
+                <button type="button" class="btn btn-primary" id="submitPrediction">Submit a prediction</button>
+              </form>
+            </div>
+
         </div>
-      <button type="button" class="btn btn-primary" id="openModal">Submit a prediction</button>
-      <!-- TODO insert modal -->
-      </div>
+        <div class="row">
+            <div class="col-md-5">
+                <h3>PAST PREDICTIONS</h3>
+                <br>
+                <div id="targetPast">
+                    <script id="templatePast" type="text/x-handlebars-template">
+                      {{#each pundit}}
+                        {{#if prediction.isChecked}}
+                          <p>
+                            {{#each prediction}}
+                            <b>Prediction: </b>
+                            {{predictionDescr}}
+                            {{/each}}
+                          <br>
+                          <b>Pundit: </b>
+                          {{name}}
+                          <br>
+                          <b>Source: </b>
+                          <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                          <br>
+                          <b>True or false? </b>
+                          {{truthValue}}
+                        {{/if}}
+                      </p>
+                      {{/each}}
+                    </script>
+                </div>
+            </div>
 
-      <div class="row">
-      <div class="col-md-5">
-        <h3>PAST PREDICTIONS</h3>
-        <div id="targetPast"></div>
-      </div>
+            <div class="col-md-7">
+                <h3>FUTURE PREDICTIONS</h3>
+                <br>
+                <div id="targetFuture">
+                  <script id="templateFuture" type="text/x-handlebars-template">
+                    {{#each pundit}}
+                      {{#if !prediction.isChecked}}
+                        <p>
+                          {{#each prediction}}
+                          <b>Prediction: </b>
+                          {{predictionDescr}}
+                          {{/each}}
+                        <br>
+                        <b>Pundit: </b>
+                        {{name}}
+                        <br>
+                        <b>Source: </b>
+                        <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                        <br>
+                        <b>Date this will be checked: </b>
+                        {{checkDate}}
+                      {{/if}}
+                    </p>
+                    {{/each}}
+                  </script>
+                </div>
+            </div>
+        </div>
 
-      <div class="col-md-7">
-        <h3>FUTURE PREDICTIONS</h3>
-        <div id="targetFuture"></div>
-      </div>
     </div>
+</body>
 
-    </div>
-  </body>
 </html>

@@ -20,20 +20,18 @@ var punditObjects = [{
 
 //possible to associate seed predictions data with seed pundit data?
 var predictionObjects = [{
-  name: "I'm going to have a great lunch today",
+  predictionDescr: "I'm going to have a great lunch today",
   checkDate: "6 April 2016",
   sourceDescr: 'NY Times column, 6 April 2016',
   sourceUrl: 'http://www.nytimes.com',
-  submitterEmail: "davidbrooks@obviouslyfakedomain.com",
   truthValue: -1,
   notes: "Lunch was actually bad"
 },
 {
-  name: "The earth will still be around today.",
+  predictionDescr: "The earth will still be around today.",
   checkDate: "6 April 2016",
   sourceDescr: 'My own head',
   sourceUrl: 'none',
-  submitterEmail: "anonymous",
   truthValue: 1,
   notes: "Yep."
   }

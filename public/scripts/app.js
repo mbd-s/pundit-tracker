@@ -1,7 +1,19 @@
 /* CLIENT-SIDE JS
 */
 
+var allPundits;
+var allPredictions;
+var pastTemplate;
+var futureTemplate;
+
 $(document).ready(function() {
+  $('#date-picker').datepicker({});
+  var pastSource = $('#templatePast').html();
+  pastTemplate = Handlebars.compile(pastSource);
+
+  var futureSource = $('#templateFuture').html();
+  futureTemplate = Handlebars.compile(futureSource);
+
   //make an ajax call to my server
   $.ajax({
     method: "GET",
