@@ -39,21 +39,25 @@ app.get('/admin', function showAdminPage(req, res) {
 //show all pundits
  app.get('/api/pundit', controllers.pundits.index);
 
+// TODO write API route
+ // show one pundit
+ // app.get('/api/pundit/:punditId', controllers.pundits.show);
+
  // create a pundit or add prediction to preexisting pundit
  app.post('/api/pundit', controllers.pundits.create);
 
  //delete a pundit (admin only)
  app.delete('/api/pundit/:punditId', controllers.pundits.remove);
 
+// TODO (FIRST!) write API route
  //update a pundit (admin only)
  // app.put('/api/pundit/:punditId', controllers.pundits.update);
 
+// TODO  write API route
  //delete a prediction (admin only)
  // app.delete('api/prediction/:predictionId', controllers.punditsPredictions.delete);
 
- // //show one pundit
- // app.get('/api/pundit/:punditId', controllers.pundits.show);
-
+// TODO write API route
  //update a prediction (admin only)
  //app.put('/api/prediction/:predictionId', controllers.punditsPredictions.update);
 

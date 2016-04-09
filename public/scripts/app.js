@@ -22,9 +22,6 @@ $(document).ready(function() {
     error: punditError
   });
 
-  //TODO write openModal function
-  // on clicking openModal button, open modal
-
   //TODO write punditCreate (or predictionCreate) function
   //on submitting form
   //prevent default

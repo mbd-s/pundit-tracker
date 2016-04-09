@@ -29,17 +29,14 @@
 <body>
     <div class="container">
         <div class="row">
-            <h2 class="text-center">PUNDIT TRACKER</h2>
-            <div class="col-md-5">
+            <div class="col-md-5" id="about">
                 <p>
-                    About: Pundit Tracker lets you easily keep track of claims that pundits make.
+                    <b>Pundit Tracker</b> lets you easily keep track of claims that pundits make.
                     Submissions should include a definite end date (e.g., June 12, 2017).
                     It's not a perfect science, but neither is punditry.
                 </p>
             </div>
-            <div class="col-md-7">
-              <!-- TODO write prediction submit form -->
-              <!-- TODO put form inside modal -->
+            <div class="col-md-4 col-md-offset-2">
               <form>
                 <fieldset class="form-group">
                   <input type="text" class="form-control" placeholder="What's the prediction?">
@@ -59,10 +56,11 @@
                 <button type="button" class="btn btn-primary" id="submitPrediction">Submit a prediction</button>
               </form>
             </div>
-
         </div>
+        <br>
+        <br>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-5 predictionColumn">
                 <h3>PAST PREDICTIONS</h3>
                 <br>
                 <div id="targetPast">
@@ -89,8 +87,7 @@
                     </script>
                 </div>
             </div>
-
-            <div class="col-md-7">
+            <div class="col-md-5 col-md-offset-2 predictionColumn">
                 <h3>FUTURE PREDICTIONS</h3>
                 <br>
                 <div id="targetFuture">
@@ -102,17 +99,17 @@
                           <b>Prediction: </b>
                           {{predictionDescr}}
                           {{/each}}
-                        <br>
-                        <b>Pundit: </b>
-                        {{name}}
-                        <br>
-                        <b>Source: </b>
-                        <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
-                        <br>
-                        <b>Date this will be checked: </b>
-                        {{checkDate}}
+                          <br>
+                          <b>Pundit: </b>
+                          {{name}}
+                          <br>
+                          <b>Source: </b>
+                          <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                          <br>
+                          <b>Date this will be checked: </b>
+                          {{checkDate}}
                       {{/if}}
-                    </p>
+                        </p>
                     {{/each}}
                   </script>
                 </div>
