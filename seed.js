@@ -2,19 +2,19 @@ var db = require("./models");
 
 var punditObjects = [{
   name: "David Brooks",
-  cassandraScore: 1,
-  image: ""
+  cassandraScore: "",
+  photo: "https://pbs.twimg.com/profile_images/418969883603263488/DrIZPihB_400x400.jpeg"
   //need to give them a cS? start at 0? 1?
   },
   {
   name: "Bill Kristol",
-  cassandraScore: 1,
-  image: ""
+  cassandraScore: "",
+  photo: "https://pbs.twimg.com/profile_images/521747547648311296/Z-2ftHoZ_400x400.png"
   },
   {
   name: "Bill O'Reilly",
-  cassandraScore: 1,
-  image: ""
+  cassandraScore: "",
+  photo: "http://vignette1.wikia.nocookie.net/drunken-peasants-podcast/images/6/6e/Bill.jpg/revision/latest?cb=20150810023621"
   }
 ];
 

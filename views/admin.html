@@ -16,17 +16,84 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
-    <script src="scripts/app.js"></script>
+    <script src="scripts/admin.js"></script>
   </head>
 
   <body>
-
-      <div id="targetAdmin">
-      <!-- TODO  Render all pundits here (on page load) with handlebars-->
-      <!-- TODO  Add a delete button-->
-      <!-- TODO  Add an update button-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <form id="updatePunditForm">
+            <fieldset class="form-group">
+              <input type="text" name="punditId" class="form-control" placeholder="Enter ID of pundit to be updated.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="Update name.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="cassandraScore" class="form-control" placeholder="Update Cassandra Score.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="photo" class="form-control" placeholder="Update photo.">
+            </fieldset>
+            <!-- TODO Handlebars to show all predictions(?) -->
+            <fieldset class="form-group">
+              <input type="text" name="predictionDescr" class="form-control" placeholder="Update predictions.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="checkDate" id="date-picker" class="form-control" placeholder="Update the check date.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="sourceDescr" class="form-control" placeholder="Update the source.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="sourceUrl" class="form-control" placeholder="Update the source URL.">
+            </fieldset>
+            <fieldset class="form-group">
+              <label><input type="checkbox" id="checkbox" name="isChecked"> Click to mark the prediction checked.</label><br>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="truthValue" class="form-control" placeholder="Update the prediction's truth value.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="notes" class="form-control" placeholder="Update the notes.">
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
       </div>
+      <div class= "row" id="targetAdmin">
+        <div class="col-md-8">
+          <script id="templateAdmin" type="text/x-handlebars-template">
+            {{#each pundit}}
+              <p>
+                <b>Pundit: </b>
+                {{name}}
+                <br>
+                <b>Cassandra Score: </b>
+                {{cassandraScore}}
+                <br>
+                <img src='{{photo}}'>
+                <br>
+                {{#each predictions}}
+                <b>Prediction: </b>
+                {{predictionDescr}}
+                {{/each}}
+                <br>
 
+                <b>Source: </b>
+                <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                <br>
+                <b>True or false? </b>
+                {{truthValue}}
+              </p>
+              <br>
+              <button type="button" name="button" class="deleteBtn btn btn-danger">Delete</button>
+              {{/each}}
+          </script>
+        </div>
+      </div>
+    </div>
   </body>
 
 </html>

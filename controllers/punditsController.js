@@ -14,10 +14,13 @@ function create(req, res) {
     // if we already have a pundit with this name,
     if(foundPundit) {
     // push prediction from req.body into this foundPundit
-    req.body.predictions.push(foundPundit);
+    //TODO fix: prediction is added to pundit, but only ID with blank entry
+    foundPundit.predictions.push(new db.Pundit({predictionDesc: req.body.predictions}));
+    foundPundit.save();
+    res.json(foundPundit);
     } else {
       db.Pundit.create( req.body, function punditMaker(err, newPundit) {
-        if (err) { return console.log('error', err); }
+        if (err) { return console.log('Error: ', err); }
         console.log(newPundit);
         // enter prediction data into newPundit here
         res.json(newPundit);
@@ -26,32 +29,34 @@ function create(req, res) {
   });
 }
 
-// ////create a prediction embedded in pundit
-// function create(req, res) {
-//  // set the value of the pundit id
-//  var punditId = req.params.punditId;
-//  // store new prediction in memory with data from request body
-//  var newPrediction = new db.Prediction({name: req.body.name});
-//  // // find pundit in database by id and add new prediction
-//  db.Pundit.findOne({_id: punditId}, function (err, foundPundit) {
-//    foundPundit.predictions.push(newPrediction);
-//    foundPundit.save(function (err, savedPundit) {
-//      res.json(savedPundit);
-//    });
-//  });
-// }
-
-
-
 function remove(req,res){
   // set the value of the pundit id
   var punditId = req.params.punditId;
   db.Pundit.findOneAndRemove({ _id: punditId }, function (err, removedPundit) {
+    if (err) { return console.log('Error: ', err); }
     res.json(removedPundit);
     console.log("Deleted ", removedPundit);
   });
 }
 
+// TODO fix: overwrites blank fields
+function update(req, res){
+  var punditId = req.params.punditId;
+  db.Pundit.findOne({ _id: punditId }, function punditUpdater(err, foundPundit){
+    if (err) { return console.log('Error: ', err); }
+    foundPundit.name = req.body.name;
+    foundPundit.cassandraScore = req.body.cassandraScore;
+    foundPundit.photo = req.body.photo;
+    foundPundit.predictions = req.body.predictions;
+    foundPundit.save(function(err, updatedPundit) {
+      if (err) { return console.log('Error: ', err); }
+      console.log(updatedPundit);
+      res.json(updatedPundit);
+    });
+});
+}
+
 module.exports.index = index;
 module.exports.create = create;
 module.exports.remove = remove;
+module.exports.update = update;

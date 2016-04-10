@@ -13,6 +13,7 @@ $(document).ready(function() {
   pastTemplate = Handlebars.compile(sourcePast);
   var sourceCurrent = $('#templateCurrent').html();
   currentTemplate = Handlebars.compile(sourceCurrent);
+
   $.ajax({
     method: "GET",
     url: "/api/pundit",
@@ -20,7 +21,6 @@ $(document).ready(function() {
     error: punditError
   });
 
-  //TODO write predictionFormCapture function
   $('#newPredictionForm').on('submit', function(e){
     e.preventDefault();
     var formData = $(this).serializeArray();
@@ -54,10 +54,10 @@ function punditError(json){
 }
 
 function newPredictionSuccess(json){
-$('#newPredictionForm input').val('');
-console.log(json);
-allPundits.push(json);
-render();
+  $('#newPredictionForm input').val('');
+  console.log(json);
+  allPundits.push(json);
+  render();
 }
 
 function newPredictionError(){

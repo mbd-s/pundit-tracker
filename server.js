@@ -51,7 +51,7 @@ app.get('/admin', function showAdminPage(req, res) {
 
 // TODO (FIRST!) write API route
  //update a pundit (admin only)
- // app.put('/api/pundit/:punditId', controllers.pundits.update);
+ app.put('/api/pundit/:punditId', controllers.pundits.update);
 
 // TODO  write API route
  //delete a prediction (admin only)
