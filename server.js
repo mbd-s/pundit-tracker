@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /*
  * HTML Endpoints
  */
- 
+
 app.get('/', function homepage(req, res) {
   console.log(__dirname);
   res.sendFile(__dirname + '/views/index.html');
@@ -44,7 +44,7 @@ app.get('/admin', function showAdminPage(req, res) {
  app.delete('/api/pundit/:punditId', controllers.pundits.remove);
 
  //update a pundit (admin only)
- app.put('/api/pundit/:punditId', controllers.pundits.update);
+ app.merge('/api/pundit/:punditId', controllers.pundits.update);
 
 
 /**********

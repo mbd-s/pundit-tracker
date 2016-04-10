@@ -20,7 +20,7 @@ $(document).ready(function() {
     console.log($(this).attr('data-id'));
     console.log('Updated prediction serialized', formData);
     $.ajax({
-      method: 'PUT',
+      method: 'MERGE',
       url: '/api/pundit', //+ pundit ID //
       data: formData,
       success: updatedPredictionSuccess,
