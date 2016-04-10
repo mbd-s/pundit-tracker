@@ -36,7 +36,6 @@ $(document).ready(function() {
         error: deletePunditError
       });
     });
-
 });
 
 function render() {
@@ -72,4 +71,14 @@ function deletePunditSuccess(json){
 
 function deletePunditError(error){
   console.log('Error deleting the pundit', error);
+}
+
+function updatedPredictionSuccess(json){
+  console.log ("Succesfully updated pundit", json);
+$('#updateMessageTarget').empty();
+$('#updateMessageTarget').append("Update successful.");
+}
+
+function updatedPredictionError(error){
+  console.log('Error updating the pundit', error);
 }
