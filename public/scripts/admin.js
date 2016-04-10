@@ -56,8 +56,18 @@ function punditError(error){
   console.log("Error rendering the pundit: ", error);
 }
 
-function deletePunditSuccess(){
-
+function deletePunditSuccess(json){
+  var pundit = json;
+  console.log(json);
+  var punditId = pundit._id;
+  console.log('Deleted pundit', punditId);
+  for (var index = 0; index < allPundits.length; index++) {
+    if(allPundits[index]._id === punditId) {
+      allPundits.splice(index, 1);
+      break;
+    }
+  }
+  render();
 }
 
 function deletePunditError(error){
