@@ -1,9 +1,9 @@
 var db = require('../models');
 
 function index(req, res) {
-  db.Pundit.find( {}, function(err, success){
+  db.Pundit.find( {}, function(err, pundits){
     if (err){ return console.log("error", err); }
-    res.json(success);
+    res.json(pundits);
   });
 }
 
@@ -15,7 +15,8 @@ function create(req, res) {
     if(foundPundit) {
     // push prediction from req.body into this foundPundit
     //TODO fix: prediction is added to pundit, but only ID with blank entry
-    foundPundit.predictions.push(new db.Pundit({predictionDesc: req.body.predictions}));
+    foundPundit.predictions.push(new db.Prediction({predictionDescr: req.body.predictionDescr}));
+    console.log(foundPundit.predictions);
     foundPundit.save();
     res.json(foundPundit);
     } else {
