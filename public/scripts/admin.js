@@ -27,6 +27,16 @@ $(document).ready(function() {
     });
   });
 
+  $('#targetAdmin').on('click', '.deleteBtn', function() {
+      console.log('Clicked delete button to', '/api/pundit/'+$(this).attr('data-id'));
+      $.ajax({
+        method: 'DELETE',
+        url: '/api/pundit/'+$(this).attr('data-id'),
+        success: deletePunditSuccess,
+        error: deletePunditError
+      });
+    });
+
 });
 
 function render() {
@@ -42,6 +52,14 @@ function punditSuccess(json){
   render();
 }
 
-function punditError(json){
-  console.log("Error!", error);
+function punditError(error){
+  console.log("Error rendering the pundit: ", error);
+}
+
+function deletePunditSuccess(){
+
+}
+
+function deletePunditError(error){
+  console.log('Error deleting the pundit', error);
 }
