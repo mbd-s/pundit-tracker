@@ -4,13 +4,12 @@ function index(req, res) {
    documentation_url: "https://github.com/mbd-s/pundit-tracker",
    base_url: "",
    endpoints: [
-     {method: "GET", path: "/api", description: "Describes all available endpoints."},
-     {method: "GET", path: "/api/pundit", description: "Returns a list of all pundits."},
-     {method: "GET", path: "/api/pundit/:punditId", description: "Shows a single pundit."},
-     {method: "POST", path: "/api/pundit", description: "Adds a new pundit, or adds a " +
+    {method: "GET", path: "/api", description: "Describes all available endpoints."},
+    {method: "GET", path: "/api/pundit", description: "Returns a list of all pundits."},
+    {method: "POST", path: "/api/pundit", description: "Adds a new pundit, or adds a " +
       "prediction to an existing pundit."},
-     {method: "POST", path: "/api/prediction", description: "Adds a new prediction."},
-     {method: "DELETE", path: "/api/pundit/:punditId", description: "Delete a pundit."}
+    {method: "PUT", path: "/api/pundit/:punditId", description: "Updates a pundit and predictions."},
+    {method: "DELETE", path: "/api/pundit/:punditId", description: "Deletes a pundit."}
    ]
  });
 }

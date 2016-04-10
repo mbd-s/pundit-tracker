@@ -14,3 +14,12 @@ img {
   width: 30px;
   height: 30px
 }
+.isTrue {
+  color: green
+}
+.isFalse {
+  color: red
+}
+.isComplicated {
+  color: blue
+}
