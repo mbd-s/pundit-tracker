@@ -44,7 +44,7 @@ app.get('/admin', function showAdminPage(req, res) {
  app.delete('/api/pundit/:punditId', controllers.pundits.remove);
 
  //update a pundit (admin only)
- app.patch('/api/pundit/:punditId', controllers.pundits.update);
+ app.put('/api/pundit/:punditId', controllers.pundits.update);
 
 
 /**********
