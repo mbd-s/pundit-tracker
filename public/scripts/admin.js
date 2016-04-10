@@ -20,7 +20,7 @@ $(document).ready(function() {
     console.log('Updated prediction serialized', formData);
     $.ajax({
       method: 'PUT',
-      url: '/api/pundit',
+      url: '/api/pundit', //+ pundit ID //
       data: formData,
       success: updatedPredictionSuccess,
       error: updatedPredictionError
@@ -75,10 +75,11 @@ function deletePunditError(error){
 
 function updatedPredictionSuccess(json){
   console.log ("Succesfully updated pundit", json);
-$('#updateMessageTarget').empty();
+$('#updateMessageTarget input').val(''); // NOT WORKING
 $('#updateMessageTarget').append("Update successful.");
 }
 
 function updatedPredictionError(error){
   console.log('Error updating the pundit', error);
+  $('#updateMessageTarget input').val('');
 }
