@@ -1,3 +1,4 @@
+cosole.log("seed has been called");
 var db = require("./models");
 
 var punditObjects = [{
@@ -38,7 +39,9 @@ var punditObjects = [{
 // ];
 
 db.Pundit.remove({}, function(err, deletedPundits){
+  console.log(deletedPundits);
   db.Pundit.create( punditObjects, function(err, successfulPundit){
+    console.log("db.Pundit.create just called");
     if (err) {
       return console.log('ERROR', err);
     }
