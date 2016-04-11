@@ -2,16 +2,15 @@
 */
 
 var allPundits = [];
-var allPredictions;
 var pastTemplate;
 var currentTemplate;
 
 $(document).ready(function() {
   $('#date-picker').datepicker({});
   //TODO add function so dates in the past can't be chosen
-  var sourcePast = $('#templatePast').html();
+  var sourcePast = $('#past-prediction-template').html();
   pastTemplate = Handlebars.compile(sourcePast);
-  var sourceCurrent = $('#templateCurrent').html();
+  var sourceCurrent = $('#current-prediction-template').html();
   currentTemplate = Handlebars.compile(sourceCurrent);
 
   $.ajax({
@@ -35,18 +34,31 @@ $(document).ready(function() {
   });
 });
 
-function render() {
+function appendToPast(pundit) {
   $('#targetPast').empty();
+  $('#targetPast').append(pundit);
+}
+
+function appendToCurrent (pundit) {
   $('#targetCurrent').empty();
-  var punditHtml = pastTemplate({ pundit: allPundits });
-  $('#targetPast').append(punditHtml);
-  $('#targetCurrent').append(punditHtml);
+  $('#targetCurrent').append(pundit);
 }
 
 function punditSuccess(json){
-  allPundits = json;
-  console.log("Success! Pundits rendered.");
-  render(json);
+  pundit = json;
+  console.log(pundit);
+  console.log("Success! Pundits retrieved.");
+  pundit.forEach( function(pundit) {
+    pundit.predictions.forEach(prediction); {
+      if(predictions.isChecked) {
+        appendToPast(pundit);
+        console.log("Incoming past predictions!");
+      } else {
+        appendToCurrent(pundit);
+        console.log("Incoming current predictions!");
+      }
+    }
+  });
 }
 
 function punditError(json){

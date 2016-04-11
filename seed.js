@@ -18,26 +18,24 @@ var punditObjects = [{
   }
 ];
 
-//possible to associate seed predictions data with seed pundit data?
-var predictionObjects = [{
-  predictionDescr: "I'm going to have a great lunch today",
-  checkDate: "160604",
-  sourceDescr: 'NY Times column, 6 April 2016',
-  sourceUrl: 'http://www.nytimes.com',
-  isChecked: true,
-  truthValue: -1,
-  notes: "Lunch was actually bad"
-},
-{
-  predictionDescr: "The earth will still be around in six months.",
-  checkDate: "161009",
-  sourceDescr: 'My own head',
-  sourceUrl: 'none',
-  isChecked: false,
-  truthValue: 1,
-  notes: "Yep."
-  }
-];
+// //possible to associate seed predictions data with seed pundit data?
+// var predictionObjects = [{
+//   predictionDescr: "I'm going to have a great lunch today",
+//   checkDate: "160604",
+//   sourceDescr: 'NY Times column, 6 April 2016',
+//   sourceUrl: 'http://www.nytimes.com',
+//   isChecked: true,
+//   truthValue: -1,
+// },
+// {
+//   predictionDescr: "The earth will still be around in six months.",
+//   checkDate: "161009",
+//   sourceDescr: 'My own head',
+//   sourceUrl: 'none',
+//   isChecked: false,
+//   truthValue: 1,
+//   }
+// ];
 
 db.Pundit.remove({}, function(err, deletedPundits){
   db.Pundit.create( punditObjects, function(err, successfulPundit){
@@ -45,13 +43,14 @@ db.Pundit.remove({}, function(err, deletedPundits){
       return console.log('ERROR', err);
     }
     console.log("Success! Here's the database entry: ", successfulPundit);
-  });
-  db.Prediction.create( predictionObjects, function(err, successfulPrediction){
-    if (err) {
-      return console.log('ERROR', err);
-    }
-    console.log("Success! Here's the database entry: ", successfulPrediction);
     process.exit();
   });
+  // db.Prediction.create( predictionObjects, function(err, successfulPrediction){
+  //   if (err) {
+  //     return console.log('ERROR', err);
+  //   }
+  //   console.log("Success! Here's the database entry: ", successfulPrediction);
+  //   process.exit();
+  // });
 console.log("Everything removed!");
 });

@@ -13,6 +13,7 @@ function create(req, res) {
     // if we already have a pundit with this name,
     if(foundPundit) {
     // push prediction from req.body into this foundPundit
+    // TODO push isCHecked: false into every new prediction
     foundPundit.predictions.push(new db.Prediction({predictionDescr: req.body.predictionDescr}));
     foundPundit.save();
     res.json(foundPundit);

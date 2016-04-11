@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-md-6" id="about">
           <p>
-            Lots of people predict things—election results, the weather, the likelihood that an asteroid will wipe out Omaha tomorrow. Sometimes they&rsquo;re right, sometimes
+            Lots of people predict things—election results, the weather, the likelihood that an asteroid will flatten Omaha. Sometimes they&rsquo;re right, sometimes
             they&rsquo;re wrong. (Newspaper columnists are usually wrong.) But it&rsquo;s
             hard to remember all those predictions floating around in the ether. And that makes
             it hard to hold the media accountable for their mistakes.
@@ -51,7 +51,7 @@
               <input type="text" name="name" class="form-control" placeholder="Who made it?" required=''>
             </fieldset>
             <fieldset class="form-group">
-              <input type="text" name="photo" class="form-control" placeholder="Enter a link to a photo of the pundit.">
+              <input type="text" name="photo" class="form-control" placeholder="Enter a link to a photo of the pundit of you'd like.">
             </fieldset>
             <fieldset class="form-group">
               <input type="text" name="checkDate" id="date-picker" class="form-control" placeholder="When should we check the prediction?" required=''>
@@ -74,6 +74,21 @@
           <br>
           <div id="targetPast">
             <!-- hardcode -->
+            <script id="past-prediction-template" type="text/x-handlebars-template">
+              <p>
+                <b>Prediction: </b>
+                {{predictionDescr}}
+                <br>
+                <img src='{{pundit.photo}}'>
+                {{pundit.name}}
+                <br>
+                <b>Source: </b>
+                <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                <br>
+                <b>True or false? </b>
+                {{truthValue}}
+              </p>
+            </script>
           </div>
         </div>
         <div class="col-md-5 col-md-offset-2 predictionColumn">
@@ -81,6 +96,21 @@
           <br>
           <div id="targetCurrent">
             <!-- hardcode -->
+            <script id="current-prediction-template" type="text/x-handlebars-template">
+              <p>
+                <b>Prediction: </b>
+                {{predictionDescr}}
+                <br>
+                <img src='{{pundit.photo}}'>
+                {{pundit.name}}
+                <br>
+                <b>Source: </b>
+                <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                <br>
+                <b>Date this will be checked: </b>
+                {{checkDate}}
+              </p>
+            </script>
           </div>
         </div>
       </div>

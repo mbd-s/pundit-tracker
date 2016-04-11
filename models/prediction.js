@@ -6,9 +6,8 @@ var PredictionSchema = new Schema({
   checkDate: String,
   sourceDescr: String,
   sourceUrl: String,
-  isChecked: Boolean,
+  isChecked: {type: Boolean, default: false},
   truthValue: Number,
-  notes: String
 });
 
 var Prediction = mongoose.model('Prediction', PredictionSchema);
