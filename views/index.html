@@ -73,57 +73,14 @@
           <h3 class="text-center">PAST PREDICTIONS</h3>
           <br>
           <div id="targetPast">
-            <script id="templatePast" type="text/x-handlebars-template">
-              {{#each pundit.prediction}}
-                <p>
-                  <b>Prediction: </b>
-                  {{predictionDescr}}
-                  <br>
-              {{/each}}
-               {{#each pundit}}
-                  <img src='{{photo}}'>
-                  {{name}}
-                  <br>
-              {{/each}}
-                  {{#each predictions}}
-                  <b>Source: </b>
-                  <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
-                  <br>
-                  <b>True or false? </b>
-                  {{truthValue}}
-                </p>
-              {{/each}}
-            </script>
+            <!-- hardcode -->
           </div>
         </div>
         <div class="col-md-5 col-md-offset-2 predictionColumn">
           <h3 class="text-center">CURRENT PREDICTIONS</h3>
           <br>
           <div id="targetCurrent">
-            <script id="templateCurrent" type="text/x-handlebars-template">
-              {{#each pundit}}
-              {{name}}
-              {{/each}}
-              {{#each pundit.predictions}}
-                <p>
-                  <b>Prediction: </b>
-                  {{predictionDescr}}
-                  <br>
-              {{/each}}
-              {{#each pundit}}
-                  <img src='{{photo}}'>
-                  {{name}}
-                  <br>
-              {{/each}}
-              {{#each pundit.predictions}}
-                  <b>Source: </b>
-                  <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
-                  <br>
-                  <b>Date this will be checked: </b>
-                {{checkDate}}
-                </p>
-              {{/each}}
-            </script>
+            <!-- hardcode -->
           </div>
         </div>
       </div>
