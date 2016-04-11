@@ -45,18 +45,22 @@ function appendToCurrent (pundit) {
 }
 
 function punditSuccess(json){
-  pundit = json;
-  console.log(pundit);
-  console.log("Success! Pundits retrieved.");
-  pundit.forEach( function(pundit) {
-    pundit.predictions.forEach(prediction); {
-      if(predictions.isChecked) {
-        appendToPast(pundit);
-        console.log("Incoming past predictions!");
-      } else {
-        appendToCurrent(pundit);
-        console.log("Incoming current predictions!");
-      }
+  pundits = json;
+  console.log("Success! Pundits gotten.");
+  pundits.forEach(function(pundit) {
+    if(! pundit.predictions[0]){
+      console.log('no predictions');
+    } else {
+      pundit.predictions.forEach(function(prediction){
+        if (prediction.isChecked){
+          console.log("Incoming past prediction: ", pundit);
+          appendToPast();
+        }
+        else {
+          console.log("Incoming current prediction: ", pundit);
+          appendToCurrent();
+        }
+      });
     }
   });
 }
