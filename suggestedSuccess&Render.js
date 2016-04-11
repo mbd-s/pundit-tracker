@@ -29,5 +29,4 @@ function appendToCurrent (pundit) {
 
 $('#targetCurrent').empty();
 var punditHtml = pastTemplate({ pundit: allPundits });
-
 $('#targetCurrent').append(punditHtml);

@@ -3,6 +3,7 @@ var db = require('../models');
 function index(req, res) {
   db.Pundit.find( {}, function(err, pundits){
     if (err){ return console.log("error", err); }
+    //console.log("Getting pundits inside index: ", pundits);
     res.json(pundits);
   });
 }
@@ -13,14 +14,20 @@ function create(req, res) {
     // if we already have a pundit with this name,
     if(foundPundit) {
     // push prediction from req.body into this foundPundit
-    // TODO push isCHecked: false into every new prediction
-    foundPundit.predictions.push(new db.Prediction({predictionDescr: req.body.predictionDescr}));
+    var newPrediction = new db.Prediction({
+      predictionDescr: req.body.predictionDescr,
+      checkDate: req.body.checkDate,
+      sourceDescr: req.body.sourceDescr,
+      sourceUrl: req.body.sourceUrl
+    });
+      console.log('NEW PREDICTION: ', newPrediction);
+    foundPundit.predictions.push(newPrediction);
     foundPundit.save();
     res.json(foundPundit);
     } else {
       db.Pundit.create( req.body, function punditMaker(err, newPundit) {
         if (err) { return console.log('Error: ', err); }
-        console.log(newPundit);
+        console.log("SAVED PUNDIT WITH NEW PREDICTION: ",newPundit);
         // enter prediction data into newPundit here
         res.json(newPundit);
       });

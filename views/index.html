@@ -75,19 +75,24 @@
           <div id="targetPast">
             <!-- hardcode -->
             <script id="past-prediction-template" type="text/x-handlebars-template">
-              <p>
-                <b>Prediction: </b>
-                {{predictionDescr}}
-                <br>
-                <img src='{{pundit.photo}}'>
-                {{pundit.name}}
-                <br>
-                <b>Source: </b>
-                <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
-                <br>
-                <b>True or false? </b>
-                {{truthValue}}
-              </p>
+              <img src='{{photo}}'>
+              {{name}}
+              <br>
+              {{#each predictions}}
+                {{#if isChecked}}
+                <p>
+                  <b>Prediction: </b>
+                  {{predictionDescr}}
+                  <br>
+                  <b>Source: </b>
+                  <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                  <br>
+                  <b>True or false? </b>
+                  {{truthValue}}
+                </p>
+                {{else}}
+                {{/if}}
+              {{/each}}
             </script>
           </div>
         </div>
@@ -98,17 +103,23 @@
             <!-- hardcode -->
             <script id="current-prediction-template" type="text/x-handlebars-template">
               <p>
-                <b>Prediction: </b>
-                {{predictionDescr}}
+                <img src='{{photo}}'>
+                {{name}}
                 <br>
-                <img src='{{pundit.photo}}'>
-                {{pundit.name}}
-                <br>
-                <b>Source: </b>
-                <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
-                <br>
-                <b>Date this will be checked: </b>
-                {{checkDate}}
+                {{#each predictions}}
+                  {{#if isChecked}}
+
+                  {{else}}
+                    <b>Prediction: </b>
+                    {{predictionDescr}}
+                    <br>
+                    <b>Source: </b>
+                    <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                    <br>
+                    <b>Date this will be checked: </b>
+                    {{checkDate}}
+                  {{/if}}
+                {{/each}}
               </p>
             </script>
           </div>

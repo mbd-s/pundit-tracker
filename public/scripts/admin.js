@@ -1,5 +1,6 @@
 /* CLIENT-SIDE JS FOR ADMIN PAGE
 */
+
 var adminTemplate;
 var allPundits = [];
 

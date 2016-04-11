@@ -8,6 +8,7 @@ var currentTemplate;
 $(document).ready(function() {
   $('#date-picker').datepicker({});
   //TODO add function so dates in the past can't be chosen
+
   var sourcePast = $('#past-prediction-template').html();
   pastTemplate = Handlebars.compile(sourcePast);
   var sourceCurrent = $('#current-prediction-template').html();
@@ -35,30 +36,44 @@ $(document).ready(function() {
 });
 
 function appendToPast(pundit) {
-  $('#targetPast').empty();
-  $('#targetPast').append(pundit);
+  console.log(pundit.prediction);
+  var pastHtml = pastTemplate(pundit);
+  //console.log(pastHtml);
+  //$('#targetPast').empty();
+  $('#targetPast').append(pastHtml);
 }
 
-function appendToCurrent (pundit) {
-  $('#targetCurrent').empty();
-  $('#targetCurrent').append(pundit);
+function appendToCurrent(pundit) {
+  var currentHtml = currentTemplate(pundit);
+  //console.log(currentHtml);
+  //$('#targetCurrent').empty();
+  $('#targetCurrent').append(currentHtml);
 }
 
 function punditSuccess(json){
   pundits = json;
-  console.log("Success! Pundits gotten.");
   pundits.forEach(function(pundit) {
-    if(! pundit.predictions[0]){
-      console.log('no predictions');
+    // console.log("predictions: ", pundit.predictions);
+    if (pundit.predictions.length  <= 0){
+      console.log('No predictions');
     } else {
       pundit.predictions.forEach(function(prediction){
+        // console.log("prediction list: ", prediction);
         if (prediction.isChecked){
-          console.log("Incoming past prediction: ", pundit);
-          appendToPast();
+          var pastArray = [];
+          pastArray.push(prediction);
+          console.log("Temp past array", pastArray);
+          console.log("---Incoming past prediction---: ", prediction);
+          appendToPast(pundit);
         }
         else {
-          console.log("Incoming current prediction: ", pundit);
-          appendToCurrent();
+          console.log("Prediction", prediction);
+          var currentArray = [];
+          currentArray.push(prediction.predictionDescr, prediction.checkDate, prediction.sourceDescr, prediction.sourceUrl);
+          console.log("Temp current array", currentArray);
+          console.log("pundit", pundit);
+          // console.log("---Incoming current prediction:--- ", prediction);
+          appendToCurrent(pundit);
         }
       });
     }
@@ -70,10 +85,11 @@ function punditError(json){
 }
 
 function newPredictionSuccess(json){
+  // needs to filter to Past/Current targets
   $('#newPredictionForm input').val('');
   console.log(json);
   allPundits.push(json);
-  render();
+  appendToCurrent(json);
 }
 
 function newPredictionError(){

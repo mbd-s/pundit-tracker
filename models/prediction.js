@@ -7,7 +7,7 @@ var PredictionSchema = new Schema({
   sourceDescr: String,
   sourceUrl: String,
   isChecked: {type: Boolean, default: false},
-  truthValue: Number,
+  truthValue: {type: Number, default: -1}
 });
 
 var Prediction = mongoose.model('Prediction', PredictionSchema);
