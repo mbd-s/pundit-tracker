@@ -46,7 +46,7 @@ function render() {
 function punditSuccess(json){
   allPundits = json;
   console.log("Success! Pundits rendered.");
-  render();
+  render(json);
 }
 
 function punditError(json){

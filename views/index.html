@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,109 +24,109 @@
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6" id="about">
+      <div class="row">
+        <div class="col-md-6" id="about">
+          <p>
+            Lots of people predict things—election results, the weather, the likelihood that an asteroid will wipe out Omaha tomorrow. Sometimes they&rsquo;re right, sometimes
+            they&rsquo;re wrong. (Newspaper columnists are usually wrong.) But it&rsquo;s
+            hard to remember all those predictions floating around in the ether. And that makes
+            it hard to hold the media accountable for their mistakes.
+            <br>
+            <br>
+            <b>Pundit Tracker</b> lets you keep track of predictions that you find anywhere. Submissions should be able to be checked with a simple
+            Google search. They should also include a date when the prediction can be judged true or false.
+            It&rsquo;s not a perfect science, but neither is punditry.
+          </p>
+        </div>
+        <div class="col-md-4 col-md-offset-1">
+          <form id="newPredictionForm">
+            <fieldset class="form-group">
+              <input type="text" name="predictionDescr" class="form-control" placeholder="What&rsquo;s the prediction?" required=''>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="Who made it?" required=''>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="photo" class="form-control" placeholder="Enter a link to a photo of the pundit.">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="checkDate" id="date-picker" class="form-control" placeholder="When should we check the prediction?" required=''>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="sourceDescr" class="form-control" placeholder="What&rsquo;s the source?" required=''>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="text" name="sourceUrl" class="form-control" placeholder="Enter a link to the source if you have one.">
+            </fieldset>
+            <button type="submit" class="btn btn-primary">Submit a prediction</button>
+          </form>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-5 predictionColumn">
+          <h3 class="text-center">PAST PREDICTIONS</h3>
+          <br>
+          <div id="targetPast">
+            <script id="templatePast" type="text/x-handlebars-template">
+              {{#each pundit.prediction}}
                 <p>
-                    Lots of people predict things—election results, the weather, the likelihood that an asteroid will wipe out Omaha tomorrow. Sometimes they&rsquo;re right, sometimes
-                    they&rsquo;re wrong. (Newspaper columnists are usually wrong.) But it&rsquo;s
-                    hard to remember all those predictions floating around in the ether. And that makes
-                    it hard to hold the media accountable for their mistakes.
-                    <br>
-                    <br>
-                    <b>Pundit Tracker</b> lets you keep track of predictions that you find anywhere. Submissions should be able to be checked with a simple
-                    Google search. They should also include a date when the prediction can be judged true or false.
-                    It&rsquo;s not a perfect science, but neither is punditry.
+                  <b>Prediction: </b>
+                  {{predictionDescr}}
+                  <br>
+              {{/each}}
+               {{#each pundit}}
+                  <img src='{{photo}}'>
+                  {{name}}
+                  <br>
+              {{/each}}
+                  {{#each predictions}}
+                  <b>Source: </b>
+                  <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                  <br>
+                  <b>True or false? </b>
+                  {{truthValue}}
                 </p>
-            </div>
-            <div class="col-md-4 col-md-offset-1">
-              <form id="newPredictionForm">
-                <fieldset class="form-group">
-                  <input type="text" name="predictionDescr" class="form-control" placeholder="What&rsquo;s the prediction?" required=''>
-                </fieldset>
-                <fieldset class="form-group">
-                  <input type="text" name="name" class="form-control" placeholder="Who made it?" required=''>
-                </fieldset>
-                <fieldset class="form-group">
-                  <input type="text" name="photo" class="form-control" placeholder="Enter a link to a photo of the pundit.">
-                </fieldset>
-                <fieldset class="form-group">
-                  <input type="text" name="checkDate" id="date-picker" class="form-control" placeholder="When should we check the prediction?" required=''>
-                </fieldset>
-                <fieldset class="form-group">
-                  <input type="text" name="sourceDescr" class="form-control" placeholder="What&rsquo;s the source?" required=''>
-                </fieldset>
-                <fieldset class="form-group">
-                  <input type="text" name="sourceUrl" class="form-control" placeholder="Enter a link to the source if you have one.">
-                </fieldset>
-                <button type="submit" class="btn btn-primary">Submit a prediction</button>
-              </form>
-            </div>
+              {{/each}}
+            </script>
+          </div>
         </div>
-        <br>
-        <br>
-        <div class="row">
-            <div class="col-md-5 predictionColumn">
-                <h3 class="text-center">PAST PREDICTIONS</h3>
-                <br>
-                <div id="targetPast">
-                    <script id="templatePast" type="text/x-handlebars-template">
-                      {{#each pundit.prediction}}
-                        <p>
-                          <b>Prediction: </b>
-                          {{predictionDescr}}
-                          <br>
-                      {{/each}}
-                       {{#each pundit}}
-                          <img src='{{photo}}'>
-                          {{name}}
-                          <br>
-                      {{/each}}
-                          {{#each predictions}}
-                          <b>Source: </b>
-                          <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
-                          <br>
-                          <b>True or false? </b>
-                          {{truthValue}}
-                      </p>
-                      {{/each}}
-                    </script>
-                </div>
-            </div>
-            <div class="col-md-5 col-md-offset-2 predictionColumn">
-                <h3 class="text-center">CURRENT PREDICTIONS</h3>
-                <br>
-                <div id="targetCurrent">
-                  <script id="templateCurrent" type="text/x-handlebars-template">
-                    {{#each pundit}}
-                    {{name}}
-                    {{/each}}
-                    {{#each pundit.predictions}}
-                      <p>
-                        <b>Prediction: </b>
-                        {{predictionDescr}}
-                        <br>
-                    {{/each}}
-                    {{#each pundit}}
-                        <img src='{{photo}}'>
-                        {{name}}
-                        <br>
-                    {{/each}}
-                    {{#each pundit.predictions}}
-                      <b>Source: </b>
-                      <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
-                      <br>
-                      <b>Date this will be checked: </b>
-                      {{checkDate}}
-                      </p>
-                    {{/each}}
-                  </script>
-                </div>
-            </div>
+        <div class="col-md-5 col-md-offset-2 predictionColumn">
+          <h3 class="text-center">CURRENT PREDICTIONS</h3>
+          <br>
+          <div id="targetCurrent">
+            <script id="templateCurrent" type="text/x-handlebars-template">
+              {{#each pundit}}
+              {{name}}
+              {{/each}}
+              {{#each pundit.predictions}}
+                <p>
+                  <b>Prediction: </b>
+                  {{predictionDescr}}
+                  <br>
+              {{/each}}
+              {{#each pundit}}
+                  <img src='{{photo}}'>
+                  {{name}}
+                  <br>
+              {{/each}}
+              {{#each pundit.predictions}}
+                  <b>Source: </b>
+                  <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
+                  <br>
+                  <b>Date this will be checked: </b>
+                {{checkDate}}
+                </p>
+              {{/each}}
+            </script>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
