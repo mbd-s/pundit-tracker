@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.creatConnection( process.env.MONGOLAB_URI ||
+mongoose.createConnection( process.env.MONGOLAB_URI ||
                   process.env.MONGOHQ_URL);
 var Pundit = require('./pundit');
 var Prediction = require('./prediction');
