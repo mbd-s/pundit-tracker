@@ -8,15 +8,12 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  console.log('body: ', req.body);
   db.Pundit.findOne({name: req.body.name}, function(err, foundPundit){
     if (err) { return console.log('error', err); }
     // if we already have a pundit with this name,
     if(foundPundit) {
     // push prediction from req.body into this foundPundit
-    //TODO fix: prediction is added to pundit, but only ID with blank entry
     foundPundit.predictions.push(new db.Prediction({predictionDescr: req.body.predictionDescr}));
-    console.log(foundPundit.predictions);
     foundPundit.save();
     res.json(foundPundit);
     } else {
