@@ -1,4 +1,4 @@
-cosole.log("seed has been called");
+console.log("seed has been called");
 var db = require("./models");
 
 var punditObjects = [{
