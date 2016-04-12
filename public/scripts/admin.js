@@ -18,7 +18,7 @@ $(document).ready(function() {
   $('#updatePunditForm').on('submit', function(e){
     e.preventDefault();
     var formData = $(this).serializeArray();
-    var $punditId = $('punditId').val();
+    var $punditId = $('input').val();
     console.log($(this).attr('data-id'));
     console.log('Updated prediction serialized', formData);
     $.ajax({
