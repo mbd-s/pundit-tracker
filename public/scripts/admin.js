@@ -18,11 +18,12 @@ $(document).ready(function() {
   $('#updatePunditForm').on('submit', function(e){
     e.preventDefault();
     var formData = $(this).serializeArray();
+    var $punditId = $('input punditId').val();
     console.log($(this).attr('data-id'));
     console.log('Updated prediction serialized', formData);
     $.ajax({
       method: 'PUT',
-      url: '/api/pundit', //+ pundit ID //
+      url: '/api/pundit'+$punditId,
       data: formData,
       success: updatedPredictionSuccess,
       error: updatedPredictionError
