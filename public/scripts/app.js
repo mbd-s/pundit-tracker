@@ -41,12 +41,18 @@ function appendToPast(pundit) {
 }
 
 function appendToCurrent(pundit) {
-  // var hbPrediction = {
-  //   name  : pundit.name,
-  //   photo : pundit.photo,
-  //   photoDescr : pundit.predictions
-  //
-  // }
+  var hbPrediction = {
+    // these capture the right data
+    name  : pundit.name,
+    photo : pundit.photo,
+    //these all come back undefined
+    predictionDescr: pundit.predictions.predictionDescr,
+    sourceDescr: pundit.predictions.sourceDescr,
+    sourceUrl : pundit.predictions.sourceUrl,
+    isChecked: false
+    };
+  console.log(hbPrediction);
+    // $('#targetCurrent').append(hbPrediction);
   var currentHtml = currentTemplate(pundit);
   $('#targetCurrent').append(currentHtml);
 }
@@ -54,19 +60,18 @@ function appendToCurrent(pundit) {
 function punditSuccess(json){
   pundits = json;
   pundits.forEach(function(pundit) {
-    // if (pundit.predictions.length  <= 0){
-    //   console.log('No predictions');
-    // } else {
-    //   pundit.predictions.forEach(function(prediction){
-    //     if (prediction.isChecked){
-    //       appendToPast(pundit);
-    //     }
-    //     else {
-    //       appendToCurrent(pundit);
-    //     }
-    //   });
-    // }
-    appendToCurrent(pundit);
+    if (pundit.predictions.length  <= 0){
+      console.log('No predictions');
+    } else {
+      pundit.predictions.forEach(function(prediction){
+        if (prediction.isChecked){
+          appendToPast(pundit);
+        }
+        else {
+          appendToCurrent(pundit);
+        }
+      });
+    }
   });
 }
 
