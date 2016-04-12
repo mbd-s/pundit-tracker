@@ -36,47 +36,37 @@ $(document).ready(function() {
 });
 
 function appendToPast(pundit) {
-  console.log(pundit.prediction);
   var pastHtml = pastTemplate(pundit);
-  //console.log(pastHtml);
-  //$('#targetPast').empty();
   $('#targetPast').append(pastHtml);
 }
 
 function appendToCurrent(pundit) {
+  // var hbPrediction = {
+  //   name  : pundit.name,
+  //   photo : pundit.photo,
+  //   photoDescr : pundit.predictions
+  //
+  // }
   var currentHtml = currentTemplate(pundit);
-  //console.log(currentHtml);
-  //$('#targetCurrent').empty();
   $('#targetCurrent').append(currentHtml);
 }
 
 function punditSuccess(json){
   pundits = json;
   pundits.forEach(function(pundit) {
-    // console.log("predictions: ", pundit.predictions);
-    if (pundit.predictions.length  <= 0){
-      console.log('No predictions');
-    } else {
-      pundit.predictions.forEach(function(prediction){
-        // console.log("prediction list: ", prediction);
-        if (prediction.isChecked){
-          var pastArray = [];
-          pastArray.push(prediction);
-          console.log("Temp past array", pastArray);
-          console.log("---Incoming past prediction---: ", prediction);
-          appendToPast(pundit);
-        }
-        else {
-          console.log("Prediction", prediction);
-          var currentArray = [];
-          currentArray.push(prediction.predictionDescr, prediction.checkDate, prediction.sourceDescr, prediction.sourceUrl);
-          console.log("Temp current array", currentArray);
-          console.log("pundit", pundit);
-          // console.log("---Incoming current prediction:--- ", prediction);
-          appendToCurrent(pundit);
-        }
-      });
-    }
+    // if (pundit.predictions.length  <= 0){
+    //   console.log('No predictions');
+    // } else {
+    //   pundit.predictions.forEach(function(prediction){
+    //     if (prediction.isChecked){
+    //       appendToPast(pundit);
+    //     }
+    //     else {
+    //       appendToCurrent(pundit);
+    //     }
+    //   });
+    // }
+    appendToCurrent(pundit);
   });
 }
 
@@ -85,7 +75,6 @@ function punditError(json){
 }
 
 function newPredictionSuccess(json){
-  // needs to filter to Past/Current targets
   $('#newPredictionForm input').val('');
   console.log(json);
   allPundits.push(json);

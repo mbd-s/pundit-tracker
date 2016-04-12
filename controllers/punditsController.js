@@ -9,26 +9,31 @@ function index(req, res) {
 }
 
 function create(req, res) {
+  var newPrediction = new db.Prediction({
+    predictionDescr: req.body.predictionDescr,
+    checkDate: req.body.checkDate,
+    sourceDescr: req.body.sourceDescr,
+    sourceUrl: req.body.sourceUrl
+  });
   db.Pundit.findOne({name: req.body.name}, function(err, foundPundit){
     if (err) { return console.log('error', err); }
     // if we already have a pundit with this name,
     if(foundPundit) {
     // push prediction from req.body into this foundPundit
-    var newPrediction = new db.Prediction({
-      predictionDescr: req.body.predictionDescr,
-      checkDate: req.body.checkDate,
-      sourceDescr: req.body.sourceDescr,
-      sourceUrl: req.body.sourceUrl
-    });
       console.log('NEW PREDICTION: ', newPrediction);
     foundPundit.predictions.push(newPrediction);
     foundPundit.save();
     res.json(foundPundit);
     } else {
+      // brand new pundit
+      console.log("CREATING NEW PUNDIT: ", req.body.name);  
       db.Pundit.create( req.body, function punditMaker(err, newPundit) {
         if (err) { return console.log('Error: ', err); }
         console.log("SAVED PUNDIT WITH NEW PREDICTION: ",newPundit);
         // enter prediction data into newPundit here
+        newPundit.predictions.push(newPrediction);
+        newPundit.save();
+        console.log("NEW PUNDIT WITH NEW PREDICTION: ", newPundit);
         res.json(newPundit);
       });
     }
