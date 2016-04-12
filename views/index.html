@@ -73,7 +73,6 @@
           <h3 class="text-center">PAST PREDICTIONS</h3>
           <br>
           <div id="targetPast">
-            <!-- hardcode -->
             <script id="past-prediction-template" type="text/x-handlebars-template">
               <img src='{{photo}}'>
               {{name}}
@@ -106,7 +105,6 @@
           <h3 class="text-center">CURRENT PREDICTIONS</h3>
           <br>
           <div id="targetCurrent">
-            <!-- hardcode -->
             <script id="current-prediction-template" type="text/x-handlebars-template">
               <p>
                 <img src='{{photo}}'>
@@ -114,7 +112,6 @@
                 <br>
                 {{#each predictions}}
                   {{#if isChecked}}
-
                   {{else}}
                     <b>Prediction: </b>
                     {{predictionDescr}}

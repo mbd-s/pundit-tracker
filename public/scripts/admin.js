@@ -77,7 +77,7 @@ function deletePunditError(error){
 
 function updatedPredictionSuccess(json){
   console.log ("Succesfully updated pundit", json);
-$('#updateMessageTarget input').val(''); // NOT WORKING
+$('#updateMessageTarget input').val('');
 $('#updateMessageTarget').append("Update successful.");
 }
 
