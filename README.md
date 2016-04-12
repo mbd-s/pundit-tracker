@@ -13,6 +13,8 @@ Technologies used:
 -CSS
 -Handlebars
 -Bootstrap
+-Heroku
+-MongoDB
 
 Existing features:
 -users can submit a prediction to be tracked
@@ -20,7 +22,8 @@ Existing features:
 
 -Planned features:
 -better rendering for multiple predictions by the same pundit.
--Working delete and update buttons on the admin page.
+-Working delete and update buttons on the admin page
+-More varied views (e.g., )
 
 User stories:
 https://trello.com/b/JuIVUR8C/pundit-tracker
