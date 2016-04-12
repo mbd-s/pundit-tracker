@@ -88,10 +88,16 @@
                   <a href='{{sourceUrl}}'>{{sourceDescr}}</a>
                   <br>
                   <b>True or false? </b>
-                  {{truthValue}}
+                  {{#if truthValue}}
+                  True
+                  {{else}}
+                  False
+                  {{/if}}
+                  <hr>
                 </p>
                 {{else}}
                 {{/if}}
+
               {{/each}}
             </script>
           </div>
@@ -120,6 +126,7 @@
                     {{checkDate}}
                   {{/if}}
                 {{/each}}
+                <hr>
               </p>
             </script>
           </div>

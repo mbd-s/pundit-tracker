@@ -1,5 +1,7 @@
 # pundit-tracker
 
+Pundit Tracker lets you track predictions. 
+
 user stories:
 https://trello.com/b/JuIVUR8C/pundit-tracker
 
