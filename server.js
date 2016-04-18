@@ -19,11 +19,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
  */
 
 app.get('/', function homepage(req, res) {
+  /* TODO: Remove Extraneous console.logs from production code -jc */
   console.log(__dirname);
   res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/admin', function showAdminPage(req, res) {
+  /* TODO: Remove extraneous console.logs from production code -jc */
   console.log(__dirname);
   res.sendFile(__dirname + '/views/admin.html');
 });

@@ -23,6 +23,7 @@ $(document).ready(function() {
     console.log('Updated prediction serialized', formData);
     $.ajax({
       method: 'PUT',
+      /* TODO: You need to put a slash at the end of pundit below for this to work properly -jc */
       url: '/api/pundit'+$punditId,
       data: formData,
       success: updatedPredictionSuccess,
@@ -42,8 +43,10 @@ $(document).ready(function() {
 });
 
 function render() {
+  /* TODO: don't empty your html each time you call render. this will always give you an empty display of pundits. -jc */
   $('#targetAdmin').empty();
   var punditHtml = adminTemplate({ pundit: allPundits });
+  /* TODO: don't append your html to the script tag. create another div with a different name and append your html to that div -jc*/
   $('#templateAdmin').append(punditHtml);
 }
 
