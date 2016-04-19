@@ -35,6 +35,7 @@ $(document).ready(function() {
   });
 });
 
+/* TODO: when we have a dull moment we can work on this logic some more. it's there, but we haven't quite gotten it yet. Good work, though -jc */
 function appendToPast(pundit) {
   var pastHtml = pastTemplate(pundit);
   $('#targetPast').append(pastHtml);

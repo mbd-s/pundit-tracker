@@ -26,7 +26,7 @@ function create(req, res) {
     res.json(foundPundit);
     } else {
       // brand new pundit
-      console.log("CREATING NEW PUNDIT: ", req.body.name);  
+      console.log("CREATING NEW PUNDIT: ", req.body.name);
       db.Pundit.create( req.body, function punditMaker(err, newPundit) {
         if (err) { return console.log('Error: ', err); }
         console.log("SAVED PUNDIT WITH NEW PREDICTION: ",newPundit);
@@ -46,6 +46,7 @@ function remove(req,res){
   db.Pundit.findOneAndRemove({ _id: punditId }, function (err, removedPundit) {
     if (err) { return console.log('Error: ', err); }
     res.json(removedPundit);
+    /* TODO: Any code below a res call will be ignored, the res call is essentially a return statement. -jc */
     console.log("Deleted ", removedPundit);
   });
 }
@@ -55,6 +56,7 @@ function update(req, res){
   var punditId = req.params.punditId;
   db.Pundit.findOne({ _id: punditId }, function punditUpdater(err, foundPundit){
     if (err) { return console.log('Error: ', err); }
+    /* TODO: Consider extracting your req.body pundit into a tempPundit object then assigning tempPundit to foundPundit This will make reading the internal code of your update much easier to read. -jc */    
     foundPundit.name = req.body.name;
     foundPundit.cassandraScore = req.body.cassandraScore;
     foundPundit.photo = req.body.photo;
